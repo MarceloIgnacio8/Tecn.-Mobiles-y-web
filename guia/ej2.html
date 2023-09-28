@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contador de Palabras</title>
+</head>
+<body>
+    <h1>Contador de Palabras</h1>
+    <p>Ingresa una oración:</p>
+    <input type="text" id="oracionInput">
+    <button onclick="contarPalabras()">Contar Palabras</button>
+    <p id="resultado"></p>
+
+    <script>
+        function contarPalabras() {
+            const oracion = document.getElementById("oracionInput").value;
+            const palabras = oracion.split(" ");
+            const numeroDePalabras = palabras.length;
+            const resultado = `Oración ingresada: ${oracion}<br>Número de palabras: ${numeroDePalabras}`;
+            document.getElementById("resultado").innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>
