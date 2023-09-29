@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Propina</title>
+</head>
+<body>
+    <h1>Calculadora de Propina</h1>
+    
+    <label for="monto">Monto Total de la Boleta (CLP):</label>
+    <input type="text" id="monto" placeholder="Ingrese el monto" />
+    
+    <label for="porcentaje">Seleccione el Porcentaje de Propina:</label>
+    <select id="porcentaje">
+        <option value="10">10%</option>
+        <option value="15">15%</option>
+        <option value="20">20%</option>
+    </select>
+    
+    <button id="calcular">Calcular</button>
+    
+    <div id="resultado">
+        <p>Monto de la Propina: <span id="montoPropina"></span> CLP</p>
+        <p>Total a Pagar (incluyendo Propina): <span id="totalConPropina"></span> CLP</p>
+    </div>
+
+    <script>
+        document.getElementById('calcular').addEventListener('click', function() {
+            // Obtener el monto de la boleta y el porcentaje de propina seleccionado
+            const montoBoleta = parseFloat(document.getElementById('monto').value);
+            const porcentajePropina = parseFloat(document.getElementById('porcentaje').value);
+
+            // Validar que el monto de la boleta sea un número válido
+            if (isNaN(montoBoleta)) {
+                alert('Por favor, ingrese un monto válido en números.');
+                return;
+            }
+
+            // Validar que se haya seleccionado un porcentaje de propina válido
+            if (isNaN(porcentajePropina)) {
+                alert('Por favor, seleccione un porcentaje de propina válido.');
+                return;
+            }
+
+            // Calcular la propina y el total con propina
+            const propina = (montoBoleta * porcentajePropina) / 100;
+            const totalConPropina = montoBoleta + propina;
+
+            // Mostrar el resultado en pantalla
+            document.getElementById('montoPropina').textContent = propina.toFixed(2);
+            document.getElementById('totalConPropina').textContent = totalConPropina.toFixed(2);
+        });
+    </script>
+</body>
+</html>
