@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificación de Alumno</title>
+</head>
+<body>
+    <h1>Calificación de Alumno</h1>
+    
+    <label for="nota1">Ingrese la Nota 1:</label>
+    <input type="number" id="nota1" placeholder="Ingrese la Nota 1" />
+    
+    <label for="nota2">Ingrese la Nota 2:</label>
+    <input type="number" id="nota2" placeholder="Ingrese la Nota 2" />
+    
+    <label for="nota3">Ingrese la Nota 3:</label>
+    <input type="number" id="nota3" placeholder="Ingrese la Nota 3" />
+    
+    <button onclick="calcularPromedio()">Calcular Promedio</button>
+    
+    <div id="resultado">
+        <p>Promedio Ponderado: <span id="promedio"></span></p>
+        <p>Resultado: <span id="estado"></span></p>
+    </div>
+
+    <script>
+        function calcularPromedio() {
+            // Obtener las notas ingresadas por el usuario
+            const nota1 = parseFloat(document.getElementById('nota1').value);
+            const nota2 = parseFloat(document.getElementById('nota2').value);
+            const nota3 = parseFloat(document.getElementById('nota3').value);
+
+            // Calcular el promedio ponderado
+            const promedioPonderado = (nota1 * 0.4 + nota2 * 0.3 + nota3 * 0.3).toFixed(2);
+
+            // Mostrar el promedio en pantalla
+            document.getElementById('promedio').textContent = promedioPonderado;
+
+            // Determinar el estado del estudiante
+            if (promedioPonderado >= 4.95) {
+                document.getElementById('estado').textContent = 'Eximido de la asignatura';
+            } else if (promedioPonderado >= 3.95) {
+                document.getElementById('estado').textContent = 'Va a examen';
+            } else {
+                document.getElementById('estado').textContent = 'Reprobado la asignatura';
+            }
+        }
+    </script>
+</body>
+</html>
