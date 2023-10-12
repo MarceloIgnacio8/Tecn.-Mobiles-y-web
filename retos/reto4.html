@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de IMC</title>
+</head>
+<body>
+    <h1>Calculadora de IMC</h1>
+    <div>
+        <label for="nombre">Nombre del paciente:</label>
+        <input type="text" id="nombre">
+    </div>
+    <div>
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso">
+    </div>
+    <div>
+        <label for="altura">Altura (metros):</label>
+        <input type="number" step="0.01" id="altura">
+    </div>
+    <div>
+        <label for="edad">Edad (años):</label>
+        <input type="number" id="edad">
+    </div>
+    <div>
+        <label for="genero">Género:</label>
+        <select id="genero">
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+        </select>
+    </div>
+    <div>
+        <label for="actividad">Nivel de actividad física:</label>
+        <select id="actividad">
+            <option value="sedentario">Sedentario</option>
+            <option value="moderado">Moderado</option>
+            <option value="activo">Activo</option>
+        </select>
+    </div>
+    <button onclick="calcularIMC()">Calcular IMC</button>
+
+    <div>
+        <h2>Resultados</h2>
+        <p>IMC: <span id="resultado-imc"></span></p>
+        <p>Clasificación del IMC: <span id="clasificacion-imc"></span></p>
+        <p>Gasto Energético Diario (GED): <span id="ged"></span></p>
+        <p>Estado Nutricional: <span id="estado-nutricional"></span></p>
+    </div>
+
+    <script>
+        function calcularIMC() {
+            const nombre = document.getElementById('nombre').value;
+            const peso = parseFloat(document.getElementById('peso').value);
+            const altura = parseFloat(document.getElementById('altura').value);
+            const edad = parseInt(document.getElementById('edad').value);
+            const genero = document.getElementById('genero').value;
+            const actividad = document.getElementById('actividad').value;
+
+            // Calcular IMC
+            const imc = peso / (altura * altura);
+
+            // Clasificar el IMC
+            let clasificacion = '';
+            if (imc < 18.5) {
+                clasificacion = 'Bajo peso';
+            } else if (imc < 24.9) {
+                clasificacion = 'Peso normal';
+            } else if (imc < 29.9) {
+                clasificacion = 'Sobrepeso';
+            } else {
+                clasificacion = 'Obesidad';
+            }
+
+            // Calcular el GED
+            let factorActividad = 1.0;
+            if (actividad === 'sedentario') {
+                factorActividad = 1.2;
+            } else if (actividad === 'moderado') {
+                factorActividad = 1.55;
+            } else if (actividad === 'activo') {
+                factorActividad = 1.9;
+            }
+            const ged = factorActividad * peso;
+
+            // Evaluar el estado nutricional
+            let estadoNutricional = '';
+            if (clasificacion === 'Peso normal' && edad >= 18) {
+                estadoNutricional = 'Tiene un estado nutricional adecuado.';
+            } else {
+                estadoNutricional = 'Estado nutricional inadecuado. Consulte a un medico.';
+            }
+
+            // Mostrar resultados
+            document.getElementById('resultado-imc').textContent = imc.toFixed(2);
+            document.getElementById('clasificacion-imc').textContent = clasificacion;
+            document.getElementById('ged').textContent = ged.toFixed(2);
+            document.getElementById('estado-nutricional').textContent = estadoNutricional;
+        }
+    </script>
+</body>
+</html>
