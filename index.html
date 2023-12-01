@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juegos de Matemáticas para Niños</title>
+  <link href="https://fonts.googleapis.com/css2?family=Franklin+Gothic+Heavy&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Franklin Gothic Heavy', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: yellow; /* Fondo amarillo */
+      color: #333; /* Texto gris oscuro */
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .custom-title {
+      font-weight: bold; /* Letras en negrita */
+      font-size: 2em; /* Tamaño de letra más grande */
+      margin-bottom: 20px; /* Espaciado inferior */
+    }
+
+    .start-button {
+      background-color: #4CAF50; /* Verde oscuro */
+      color: #fff; /* Texto blanco */
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2em;
+    }
+
+    .start-button:hover {
+      background-color: #45a049; /* Cambia el color al pasar el mouse */
+    }
+
+    /* Agregamos símbolos de suma y resta */
+    .math-symbols {
+      font-size: 3em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="custom-title">¡Bienvenido a Juegos de Matemáticas para Niños!</h1>
+    
+    <!-- Agregamos símbolos de suma y resta -->
+    <div class="math-symbols">
+      &#43; &#8722;
+    </div>
+
+    <!-- Botón para Iniciar Sesión -->
+    <button class="start-button" onclick="openLoginWindow()">Iniciar Sesión</button>
+  </div>
+
+  <script>
+    function openLoginWindow() {
+      // Abre una nueva ventana de inicio de sesión
+      const loginWindow = window.open("login.html", "LoginWindow", "width=400,height=400");
+    }
+  </script>
+
+</body>
+</html>
