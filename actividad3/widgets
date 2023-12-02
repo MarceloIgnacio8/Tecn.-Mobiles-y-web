@@ -1,1 +1,44 @@
+  Widget build(BuildContext context) {
+    // Para retornar CarouselSlider con una lista de MiCard y opciones de estilo
+    return CarouselSlider(
+      items: [
+        MiCard('Bulbasaur', 'Planta', 'assets/bulbasaur.png', 1),
+        MiCard('Charmander', 'Fuego', 'assets/charmander.png', 4),
+        MiCard('Squirtle', 'Agua', 'assets/squirtle.png', 7),
+      ],
+      options: CarouselOptions(
+        height: 400.0,
+        enlargeCenterPage: true,
+      ),
+    );
+  }
+}
 
+// clase MiCard 
+class MiCard extends StatelessWidget {
+  final String nombre;
+  final String elemento;
+  final String imagen;
+  final int numeroPokedex;
+
+  // Constructor de clase MiCard
+  MiCard(this.nombre, this.elemento, this.imagen, this.numeroPokedex);
+
+  @override
+  Widget build(BuildContext context) {
+    // Retorna un Card con un ListTile que contiene la información del Pokémon
+    return Card(
+      child: ListTile(
+        leading: Image.asset(imagen),  // Imagen del Pokémon
+        title: Text(nombre),            // Nombre del Pokémon
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Elemento: $elemento'),       // Elemento del Pokémon
+            Text('Pokedex: $numeroPokedex'),   // Número en la Pokedex
+          ],
+        ),
+      ),
+    );
+  }
+}
