@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'profile_page.dart';
+
+class MiWidget extends StatefulWidget {
+  @override
+  _MiWidgetState createState() => _MiWidgetState();
+}
+
+class _MiWidgetState extends State<MiWidget> {
+  int _currentIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('App Flutter'),
+      ),
+      body: _buildBody(),
+      bottomNavigationBar: BottomNavyBar(
+        selectedIndex: _currentIndex,
+        onItemSelected: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: [
+          BottomNavyBarItem(
+            icon: Icon(Icons.home),
+            title: Text('Home'),
+            activeColor: Colors.blue,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.person),
+            title: Text('Perfil'),
+            activeColor: Colors.blue,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBody() {
+    switch (_currentIndex) {
+      case 0:
+        return _buildCarousel(); // Carrusel
+      case 1:
+        return ProfilePage(); // Perfil
+      default:
+        return Container();
+    }
+  }
+
+  Widget _buildCarousel() {
+    return CarouselSlider(
+      items: [
+        // Agregar elementos
+        Container(
+          color: Colors.blue,
+          child: Center(child: Text('Objeto 1')),
+        ),
+        Container(
+          color: Colors.green,
+          child: Center(child: Text('Objeto 2')),
+        ),
+      ],
+      options: CarouselOptions(
+        height: 400.0,
+        enlargeCenterPage: true,
+      ),
+    );
+  }
+}
