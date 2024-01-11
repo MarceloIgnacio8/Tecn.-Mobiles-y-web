@@ -1,0 +1,22 @@
+name: pokedex
+description: A description of your project
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.3
+
+
+  provider: ^6.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  assets:
+    - assets/imagenes/
+
